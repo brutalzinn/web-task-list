@@ -4,20 +4,16 @@ import { Button, Modal, Form } from 'react-bootstrap';
 function ApiKey() {
 const [show, setShow] = useState(false);
 const [apiKey, setApiKey] = useState<string>() ;
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const ShowApiKey = () => {
-    console.log("teste fsdfsd")
-    handleShow()
-
-  }
-  const GenerateApiKey = () => {
-    setApiKey("your api key here")
-    ///call api logic here
-    ShowApiKey()
-  }
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+const ShowApiKey = () => {
+  handleShow()
+}
+const GenerateApiKey = () => {
+///call api logic here
+  setApiKey("your api key here")
+  ShowApiKey()
+}
   return (
   <>
       <Modal show={show} onHide={handleClose}>
