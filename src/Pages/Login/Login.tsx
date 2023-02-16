@@ -20,9 +20,11 @@ const handleInputChange = (e : any) => {
     [name]: value,
   });
 };
-const login = async () => {
- const response = await axiosInstance.post('/login', values)
- console.log(response)
+const login =  () => {
+  axiosInstance.post('/login', values).then((response) => {
+        localStorage.setItem("AccessToken", response.data.AccessToken);
+        axiosInstance.defaults.headers.post['Authorization'] = 'Baerer ' + response.data.AccessToken
+      })
 }
   return (
        <Form>
