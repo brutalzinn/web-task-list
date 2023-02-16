@@ -1,5 +1,5 @@
 import React from 'react';
-import ApiKey from './Components/Home/ApiKey';
+import ApiKey from './Components/Home/TokenKey';
 
 function App() {
   return (
