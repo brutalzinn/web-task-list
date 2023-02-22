@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { IError, ILoginRequest } from './interfaces';
-import axiosInstance from '../../http/axios';
+import { IErrorDialog, ILoginRequest } from './interfaces';
+import axiosInstance from '../../http/HttpConfig';
 import { useNavigate } from 'react-router-dom';
 import { AlertError } from '../../Components/AlertError/AlertError';
 
@@ -10,11 +10,11 @@ function LoginPage() {
   const navigate = useNavigate()
 
 const initialValues :ILoginRequest = {
-  email: "",
-  password: "",
+  email: "teste@gmail.com",
+  password: "Teste",
 };
 const [values, setValues] = useState(initialValues);
-const [error, setError] = useState<IError>({message:'',show:false,statusCode:0});
+const [error, setError] = useState<IErrorDialog>({message:'',show:false,statusCode:0});
 
 const handleInputChange = (e : any) => {
   const { name, value } = e.target;
@@ -29,8 +29,10 @@ const toggleError = (visible: boolean, message?: string) => {
 }
 const login =  () => {
   axiosInstance.post('/login', values).then((response) => {
-        localStorage.setItem("AccessToken", response.data.AccessToken);
-      toggleError(false)
+        localStorage.setItem("accesstoken", response.data.accesstoken);
+        let acessToken = response.data.accesstoken
+        axiosInstance.defaults.headers.Authorization = "Baerer " + acessToken
+        toggleError(false)
         navigate('/dashboard')
   }).catch((ex)=>{
       console.log(ex)

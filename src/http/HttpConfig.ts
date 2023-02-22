@@ -6,7 +6,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(function (request) {
-  let acessToken = localStorage.getItem("AccessToken") || null
+  let acessToken = localStorage.getItem("accesstoken") || null
   if(acessToken != null){
       request.headers.Authorization = "Baerer " + acessToken
   }
@@ -21,7 +21,7 @@ instance.interceptors.request.use(function (request) {
 instance.interceptors.response.use(function (response) {
   // Any status code that lie within the range of 2xx cause this function to trigger
   // Do something with response data
-  console.log(response)
+  // console.log(response)
   return response;
 }, function (error) {
   // Any status codes that falls outside the range of 2xx cause this function to trigger
