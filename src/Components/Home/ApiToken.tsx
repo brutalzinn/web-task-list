@@ -5,7 +5,7 @@ function ApiToken({name, createAt, expireAt} : IApiKey) {
  return (
         <>
           <td>{name}</td>
-          <td colSpan={2}>{createAt}</td>
+          <td>{createAt}</td>
           <td>{expireAt}</td>
         </>)
 }

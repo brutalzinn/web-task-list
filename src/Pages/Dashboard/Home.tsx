@@ -48,9 +48,9 @@ function Dashboard() {
     <Table striped bordered hover>
     <thead>
     <tr>
-    <th>Name</th>
-    <th>Expire At</th>
+    <th>Key name</th>
     <th>Create At</th>
+    <th>Expire At</th>
     </tr>
     </thead>
     <tbody>
