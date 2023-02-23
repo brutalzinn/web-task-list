@@ -14,15 +14,16 @@ export interface IMessageDialog {
     message: string 
     show: boolean
 }
-export interface ILink{
-    rel: string
-    href: string
-    type: string
+export interface ILink {
+  [key: string]: {
+      href: string;
+      type: string;
+  };
 }
 export interface IApiKey {
    id?: number
    name: string,
    expireAt: string,
    createAt: string,
-   links?: Array<ILink>
+   links?: ILink
 }

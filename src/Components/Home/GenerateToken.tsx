@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import axiosInstance from '../../http/HttpConfig';
-import { IErrorDialog } from '../../Pages/Login/interfaces';
+import { IErrorDialog, ILink } from '../../Pages/Login/interfaces';
 
 function TokenKey() {
 const [show, setShow] = useState(false);
@@ -17,15 +17,7 @@ const handleShow = () => setShow(true);
 const ShowApiKey = () => {
   handleShow()
 }
-const RevokeApiKey = (id : number) => {
- axiosInstance.post(`/apikey/revoke/${id}`).then((response) => {
-      let data = response.data.accesstoken
-      console.log(data)
-      toggleError(false)
-  }).catch((ex)=>{
-      toggleError(true, ex.response.data)
-  })
-}
+
 const GenerateApiKey = () => {
 ///call api logic here
  axiosInstance.post('/apikey/generate').then((response) => {
